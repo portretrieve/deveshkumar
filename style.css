@@ -109,13 +109,12 @@ h3 + p {
 /*****Nav*****/
 
 @supports (position: sticky) {
-  .dkheader {
+  .nav {
     position: sticky;
     top: 0;
   }
 }
-
-.dkheader {
+.nav {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -126,102 +125,52 @@ h3 + p {
   text-align: center;
 }
 
-.dknavigation {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.dkmenu {
+.nav-menu {
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  z-index: 1;
   transition: 0.05s;
 }
 
-.dkmenu li {
+.nav-item {
   list-style-type: none;
 }
 
-.dkmenu li a {
+.nav-link {
   color: #fff;
   text-decoration: none;
   display: block;
-  padding: 40px 25px;
+  padding: 35px 20px;
   line-height: 1;
   transition: 0.3s;
   font-size: 1.3em;
 }
 
-.dkmenu li a:hover {
+.nav-link:hover {
   box-shadow: 0 -5px 0px #fff inset, 500px 0 0 rgba(255, 255, 255, 0.03) inset;
-  padding: 35px 25px 45px 25px;
+  padding: 35px 21px;
 }
 
 .hamburger {
-  position: relative;
-  width: 30px;
-  height: 4px;
-  background: #fff;
-  border-radius: 10px;
-  cursor: pointer;
-  z-index: 2;
-  transition: 0.03s;
-}
-
-.hamburger:before,
-.hamburger:after {
-  content: "";
-  position: absolute;
-  height: 4px;
-  right: 0;
-  background: #fff;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-.hamburger:before {
-  top: -10px;
-  width: 20px;
-}
-.hamburger:after {
-  top: 10px;
-  width: 25px;
-}
-.toggle-menu {
-  position: absolute;
-  width: 30px;
-  height: 100%;
-  z-index: 3;
-  cursor: pointer;
-  opacity: 0;
-}
-
-.hamburger,
-.toggle-menu {
   display: none;
+  cursor: pointer;
 }
 
-.dknavigation input:checked ~ .hamburger {
-  background: transparent;
-}
-
-.dknavigation input:checked ~ .hamburger::before {
-  top: 0;
-  transform: rotate(-45deg);
-  width: 30px;
-}
-
-.dknavigation input:checked ~ .hamburger::after {
-  top: 0;
-  transform: rotate(45deg);
-  width: 30px;
-}
-
-.dknavigation input:checked ~ .dkmenu {
-  right: 0;
-  box-shadow: -20px 0 40px;
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
 }
 
 /*************Popup**********/
@@ -460,40 +409,59 @@ footer h2 {
     margin-top: 10px;
   }
 
-  /* ************************************************** */
+  /* ********************Hamburger 1****************************** */
 
-  .hamburger,
-  .toggle-menu {
+  .hamburger {
     display: block;
-    right: 0;
   }
 
-  .dkheader {
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav {
     padding: 10px 20px;
     height: 100px;
+    justify-content: end;
   }
-  .dkmenu {
-    justify-content: start;
+
+  .nav-menu {
     flex-direction: column;
     align-items: center;
     position: fixed;
     top: 0;
-    right: -300px;
-    background: #4527a0;
-    width: 300px;
-    height: 100%;
+    left: 100%;
+    background: var(--back-color);
+    width: 100%;
     padding-top: 65px;
   }
 
-  .dkmenu li {
-    width: 100%;
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 5px;
+    transition: 0.3s;
   }
 
-  .dkmenu li a {
-    padding: 30px;
-    font-size: 24px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  .nav-link:hover {
+    box-shadow: 0 -5px 0px #fff inset, 500px 0 0 rgba(255, 255, 255, 0.03) inset;
+    padding: 10px 5px;
   }
 
-  /* Footer */
+  .nav-item {
+    margin: 16px 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
 }

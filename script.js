@@ -1,7 +1,9 @@
-let images = document.querySelectorAll(".project-image");
+const images = document.querySelectorAll(".project-image");
+const popup = document.querySelector("#popup");
+const popupImage = document.querySelector("#popup-img");
 
-let popup = document.querySelector("#popup");
-let popupImage = document.querySelector("#popup-img");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
 images.forEach((image) => {
   image.addEventListener("click", (e) => {
@@ -16,3 +18,15 @@ popup.addEventListener("click", (event) => {
   }
   popup.style.display = "none";
 });
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-link").forEach((navLink) =>
+  navLink.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+  })
+);
